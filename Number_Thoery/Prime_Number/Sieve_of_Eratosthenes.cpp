@@ -4,8 +4,9 @@ using namespace std;
 #define endl "\n"
 
 const ll mx = 1e8;
-vector<bool>vis(mx);
+vector<bool>vis(mx+1);
 vector<ll>prime;
+set<ll>prime1;
 
 void sieve()
 {
@@ -22,9 +23,11 @@ void sieve()
         }
     }
     prime.push_back(2);
+    prime1.insert(2);
     for(ll i=3; i<=mx; i+=2){
         if(vis[i]==false){
             prime.push_back(i);
+            prime1.insert(i);
         }
     }
 }
@@ -35,7 +38,16 @@ int main()
     cout.tie(0);
     sieve();
     //cout << prime.size();
-    for(ll i=0; i<prime.size(); i++) cout << prime[i] << " ";
-    cout << endl;
+    // for(ll i=0; i<prime.size(); i++) cout << prime[i] << " ";
+    // cout << endl;
+    ll q; cin >> q;
+    while(q--){
+        ll n; cin >> n;
+        if(prime1.find(n)!=prime1.end()){
+            cout << n << " prime" << endl;
+        }else{
+            cout << n << " not prime" << endl;
+        }
+    }
     return 0;
 }
