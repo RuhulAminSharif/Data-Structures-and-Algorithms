@@ -4,8 +4,8 @@ using namespace std;
 #define endl "\n"
 /*
 the first or the smallest index in a sorted array
-where the value at that index is greater than or 
-equal to a given key i.e. key.
+where the value at that index is greater than 
+to a given key i.e. key.
 */
 int main()
 {
