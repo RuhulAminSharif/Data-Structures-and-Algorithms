@@ -38,7 +38,8 @@ bool kmp(string text, string pattern)
                 ++i;
             }
         }
-        if(index==pattern.size()-1){
+        if(index==pattern.size()){
+            // +1 if we need to return 1-base indexing matching starting position
             // cout << i-pattern.size()+1 << endl; // from where the substring is found, starting index
             index = lps[index-1];//for all occurances
             fg = true;
@@ -53,10 +54,10 @@ int main()
     string text, pattern;
     cin  >> text >> pattern;
     createlps(pattern);
-    for(int i=0; i<pattern.size(); i++){
-        cout << lps[i] << " ";
-    }
-    cout << endl;
+    // for(int i=0; i<pattern.size(); i++){
+    //     cout << lps[i] << " ";
+    // }
+    // cout << endl;
     if(kmp(text,pattern)){
         cout << "Found" << endl;
     }else{
