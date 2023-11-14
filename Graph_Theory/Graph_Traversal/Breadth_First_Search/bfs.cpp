@@ -29,7 +29,7 @@ void pathprint()
     }
     cout << path.top() << endl;
 }
-void bfs(ll start, ll end)
+void bfs(ll start, ll dest)
 {
     queue<ll>q;
     // push the initial starting node
@@ -62,14 +62,14 @@ void bfs(ll start, ll end)
             }
         }
     }
-    path.push(end);
-    if(start == end){
+    path.push(dest);
+    if(start == dest){
         path.push(start);
         return ;
     }
-    while(parent[end]!=-1){
-        path.push(parent[end]);
-        end = parent[end];
+    while(parent[dest]!=-1){
+        path.push(parent[dest]);
+        dest = parent[dest];
     }
     return ;
 }
@@ -91,11 +91,11 @@ int main()
     }
 
     // taking input of starting and end node
-    ll start, end;
-    cin >> start >> end;
+    ll start, dest;
+    cin >> start >> dest;
 
     // bfs function call
-    bfs(start, end);
+    bfs(start, dest);
 
     cout << endl;
     
