@@ -58,6 +58,7 @@ void insert_pos(int value, int pos)
     /// cout << "valid insertion" << endl;
     return ; /// true
 }
+/// this function insert the given newValue before the first occurance of the given value
 void insert_before_value(int value, int newValue)
 {
     if(head==NULL){
@@ -93,6 +94,7 @@ void insert_before_value(int value, int newValue)
     /// cout << "can't insert" << endl;
     return ; /// false
 }
+/// this function insert the given newValue after the first occurance of the given value
 void insert_after_value(int value, int newValue)
 {
     if(head==NULL){
@@ -244,6 +246,7 @@ void remove_pos(int pos)
     /// cout << "can't remove" << endl;
     return ; /// false
 }
+/// this function removes the first occurance of the given value
 void removeVal(int value)
 {
     if(head==NULL){
