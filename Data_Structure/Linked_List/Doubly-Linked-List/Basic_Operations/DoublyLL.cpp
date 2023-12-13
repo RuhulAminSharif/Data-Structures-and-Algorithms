@@ -287,6 +287,27 @@ void updateNode(info* loc, int newValue)
     /// given location doesn't exist
     return ; /// false
 }
+void reverseList()
+{
+    /// check if the list is empty
+    /// or has only one node
+    if(head==NULL || head->next == NULL){
+        /// no change is needed
+        return ;
+    }
+    info *current, *before, *later;
+    current = head;
+    before = NULL;
+    while(current != NULL){
+        before = current->prev;
+        later = current->next;
+        current->prev = later;
+        current->next = before;
+        current = later;
+    }
+    head = before->prev;
+    return ;
+}
 int len()
 {
     info* node = new info();
@@ -361,5 +382,7 @@ int main()
     show(); /// 100 10 10000
     updateNode(head->next, 1245);
     show(); /// 100 1245 10000
+    reverseList();
+    show(); /// 10000 1245 100
     return 0;
 }
