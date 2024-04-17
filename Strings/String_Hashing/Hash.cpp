@@ -40,7 +40,6 @@ void pow_calc()
 struct HashedString {
     int len;
     vector<pair<int,int>> s_hash;
-    Hashing() {}
     HashedString(const string& s ) {
         len = s.size();
         s_hash.resize(len+1);
