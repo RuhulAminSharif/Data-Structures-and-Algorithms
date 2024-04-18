@@ -18,7 +18,7 @@ long long mod_pow(long long b, long long p, const int mod)
     return r;
 }
 const int mod1 = 1e9+7, mod2 = 1e9+9;
-const int base1 = 159, base2 = 277;
+const int base1 = 37, base2 = 53;
 int ibase1, ibase2;
 const int N = 1e7+9;
 vector<pair<int,int>> pw(N), inv_pw(N);
@@ -45,18 +45,23 @@ struct HashedString {
         s_hash.resize(len+1);
         for( int i = 0; i < len; i += 1 ) {
             pair<int,int> p;
-            p.first = ( s_hash[i].first + 1LL * pw[i].first * s[i] % mod1 ) % mod1;
-            p.second = ( s_hash[i].second + 1LL * pw[i].second * s[i] % mod2 ) % mod2;
+            p.first = ( s_hash[i].first + 1LL * pw[i].first * (s[i]-'a'+1) % mod1 ) % mod1;
+            p.second = ( s_hash[i].second + 1LL * pw[i].second * (s[i]-'a'+1) % mod2 ) % mod2;
             s_hash[i+1] = p;
         }
     }
     pair<int,int> getHash( int left, int right ) {
-        assert( 1 <= left && left <= right && right <= len );
+        if( left == 0 ) {
+            return s_hash[right];
+        }
         pair<int,int> ans;
-        ans.first = ( s_hash[right].first - s_hash[left-1].first + mod1) * 1LL * inv_pw[left-1].first % mod1;
-        ans.second = ( s_hash[right].second - s_hash[left-1].second + mod2) * 1LL * inv_pw[left-1].second % mod2;
-    //    if( ans.first < 0 ) ans.first += mod1;
-    //    if( ans.second < 0 ) ans.second += mod2;
+        ans.first = s_hash[right].first - s_hash[left-1].first;
+        if( ans.first < 0 ) ans.first += mod1;
+        ans.first = ans.first * 1LL * inv_pw[left].first % mod1;
+
+        ans.second = s_hash[right].second - s_hash[left-1].second;
+        if( ans.second < 0 ) ans.second += mod2;
+        ans.second = ans.second * 1LL * inv_pw[left].second % mod2;
         return ans;
     }
 };
@@ -65,14 +70,6 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    pow_calc();
-    string s = "abab";
-    HashedString hs(s);
-    if( hs.getHash(1,2) == hs.getHash(3,4) ) {
-        cout << "the substring consisting first and second character equal to substring consisting of third and fourth character" << endl;
-    }
-    else {
-        cout << "not equal" << endl;
-    }
+
     return 0;
 }
