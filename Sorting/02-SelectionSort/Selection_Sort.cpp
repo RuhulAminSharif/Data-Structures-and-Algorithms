@@ -2,26 +2,31 @@
 using namespace std;
 #define ll long long 
 #define endl "\n"
-void Selection_Sort(ll *a, ll start, ll size)
+int select(int arr[], int i, int n)
 {
-    for(ll i=start; i<size-1; i++){
-        ll min = i;
-        for(ll j=i+1; j<size; j++){
-            if(a[j]<a[min]){
-                min = j;
-            }
+    int mnIdx = i, mn = arr[i];
+    for( int idx = i+1; idx < n; idx += 1 ) {
+        if( arr[idx] < mn ) {
+            mn = arr[idx];
+            mnIdx = idx;
         }
-        if(min!=i){
-            swap(a[i], a[min]);
-        }
+    }
+    return mnIdx;
+}
+     
+void selectionSort(int arr[], int n)
+{
+    for( int i = 0; i < n; i += 1 ) {
+        int idx = select( arr, i, n) ;
+        swap(arr[idx], arr[i]);
     }
 }
 int main()
 {
-    ll a[] = {3,7,0,1,5,8,3,2,34,66,87,23,12,12,12};
-    ll size = sizeof(a)/sizeof(ll);
+    int a[] = {3,7,0,1,5,8,3,2,34,66,87,23,12,12,12};
+    int size = sizeof(a)/sizeof(int);
 
-    Selection_Sort(a, 0, size); //a->array, 0->start index, (size)-> size of the array
+    selectionSort(a, size);
 
     for(ll i=0; i<size; i++){
         cout << a[i] << " ";
