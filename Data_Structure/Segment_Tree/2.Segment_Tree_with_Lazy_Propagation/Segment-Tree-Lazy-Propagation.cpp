@@ -81,18 +81,10 @@ int main()
   ll n, m; cin >> n >> m;
   vector<ll> v(n+1);
   for( ll i = 1; i <= n; i += 1 ) {
-    v[i] = 0;
+    cin >> v[i];
   }
   segmentTree st(v, n);
-  while( m-- ) {
-    int type; cin >> type;
-    if( type == 1 ) {
-      ll l, r, x; cin >> l >> r >> x;
-      st.rangeUpdate(l+1, r, x);
-    }
-    else{
-      ll l, r; cin >> l >> r;
-      cout << st.rangeQuery(l+1, r) << endl;
-    }
-  }
+  
+  // st.rangeUpdate(l, r, x);
+  // st.rangeQuery(l, r) << endl;
 }
