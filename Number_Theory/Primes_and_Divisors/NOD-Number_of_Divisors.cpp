@@ -22,9 +22,9 @@ void sieve()
         }
     }
 }
-vector<ll> get_occurance( ll n )
+vector<pair<ll,ll>> get_occurance( ll n )
 {
-    vector<ll>occurance;
+    vector<pair<ll,ll>>occurance;
     for( ll i = 0; prime[i] * prime[i] <= n ; i += 1 ) {
         if( n % prime[i] == 0 ) {
             ll cnt = 0 ;
@@ -32,18 +32,18 @@ vector<ll> get_occurance( ll n )
                 n /= prime[i];
                 cnt += 1;
             }
-            if( cnt ) occurance.push_back(cnt);
+            if( cnt ) occurance.push_back({prime[i],cnt});
         }
     }
-    if( n > 1 ) occurance.push_back(1);
+    if( n > 1 ) occurance.push_back({n,1});
     return occurance;
 }
 ll get_nod( ll n )
 {
-    vector<ll> occurance = get_occurance(n);
+    vector<pair<ll,ll>> occurance = get_occurance(n);
     ll nod = 1, len = occurance.size();
     for( ll i = 0; i < len; i += 1 ) {
-        nod *= ( occurance[i] + 1 );
+        nod *= ( occurance[i].second + 1 );
     }
     return nod;
 }
