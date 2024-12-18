@@ -14,11 +14,12 @@ vector<vector<ll>> matrixMultiply( vector<vector<ll>>&a, vector<vector<ll>>&b )
 {
     ll row = a.size();
     ll col = b[0].size();
+    ll shared = a[0].size(); // b.size()
     vector<vector<ll>> prod(row,vector<ll>(col,0));
     for( ll i = 0; i < row; i += 1 ) {
         for( ll j = 0; j < col; j += 1 ) {
             ll sum = 0;
-            for( ll k = 0; k < col; k += 1 ) {
+            for( ll k = 0; k < shared; k += 1 ) {
                 /// sum += (a[i][k] * b[k][j]);
                 sum = mod_add( sum, mod_mul( a[i][k], b[k][j] ));
             }
