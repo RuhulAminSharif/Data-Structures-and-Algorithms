@@ -3,45 +3,67 @@ using namespace std;
 #define ll long long int
 #define ld long double
 #define endl "\n"
-vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int source)
+#define inf 1e18
+void dijkstra(vector<vector<pair<ll, ll>>> &adj, ll src, ll dst)
 {
-    int V = adj.size();
-    vector<int> dist( V, 1e9 );
-    set<pair<int, int>> st;
-    st.insert( {0, source} );
-    dist[source] = 0;
+    ll node = adj.size();
+    vector<ll> dist( node + 1, inf );
+    vector<ll> parent( node + 1, 0 );
+    set<pair<ll, ll>> st;
+    st.insert( {0, src} );
+    dist[src] = 0;
+    parent[src] = -1;
     while( st.size() > 0 ) {
         auto it = *(st.begin());
-        int node = it.second;
+        ll node = it.second;
         st.erase(st.begin());
         for( auto it : adj[node] ) {
-            int adjNode = it.first;
-            int adjWeight = it.second;
-            int nextWeight = dist[node] + adjWeight;
+            ll adjNode = it.first;
+            ll adjWeight = it.second;
+            ll nextWeight = dist[node] + adjWeight;
             if( nextWeight < dist[adjNode] ) {
                 st.erase( {dist[adjNode], adjNode} );
                 dist[adjNode] = nextWeight;
+                parent[adjNode] = node;
                 st.insert( { nextWeight, adjNode } );
             }
         }
     }
-    return dist;
+    vector<ll> path;
+    if( dist[dst] == inf ) {
+        path.push_back(-1);
+    }
+    else {
+        path.push_back(dst);
+        ll node = dst;
+        while( parent[node] != -1 ) {
+            path.push_back( parent[node] );
+            node = parent[node];
+        }
+    }
+    reverse( path.begin(), path.end() );
+    for( ll i = 0; i < path.size(); i += 1 ) {
+        cout << path[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 1; i <= node; i += 1 ) {
+        cout << "Node " << i << ": " << dist[i] << "\n";
+    }
+    return ;
 }
 
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    int V, E; cin >> V >> E;
-    vector<vector<pair<int, int>>> adj ( V ); /// node -> node, weight
-    for( ll i = 0; i < E; i += 1 ) {
+    ll node, edge; cin >> node >> edge;
+    vector<vector<pair<ll, ll>>> adj ( node + 1 );
+    for( ll i = 1; i <= edge ; i += 1 ) {
         ll u, v, w; cin >> u >> v >> w;
-        adj[u].push_back( { v, w } );
-        adj[v].push_back( { u, w } );
+        if( u != v ) {
+            adj[u].push_back( { v, w } );
+            adj[v].push_back( { u, w } );
+        }
     }
-    ll src; cin >> src;
-    vector<int> dist = dijkstra(adj, src);
-    cout << "Shortest distances from node " << src << ":\n";
-    for (int i = 0; i < V; i += 1 ) {
-        cout << "Node " << i << ": " << dist[i] << "\n";
-    }
+    dijkstra(adj, 1, node);
     return 0;
 }
