@@ -55,6 +55,8 @@ Data Structures and Algorithms Implementation in C++
 >> * Bellman Ford Algo
 >> * Floydd-Warshall
 >> * Johnsons Algo
+> * Minimum Spanning Tree
+>> * Prims Algorithm 
 ## Math
 > * Matrices
 >> * Matrix Exponentiation
