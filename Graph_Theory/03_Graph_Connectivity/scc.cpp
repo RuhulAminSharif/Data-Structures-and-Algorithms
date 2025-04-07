@@ -3,7 +3,7 @@ using namespace std;
 #define ll long long int
 #define ld long double
 #define endl "\n"
-
+vector<vector<int>> sccs;
 void dfs( vector<vector<int>>& adj, int node, vector<bool>& vis, stack<int>& finishTime )
 {
     vis[node] = true;
@@ -26,7 +26,7 @@ void reverseDFS( vector<vector<int>>& transposedAdj, int node, vector<bool>& vis
     }
     return ;
 }
-vector<vector<int>> SCC( vector<vector<int>>& adj, vector<vector<int>>& transposedAdj, int V )
+int SCC( vector<vector<int>>& adj, vector<vector<int>>& transposedAdj, int V )
 {
     stack<int> finishTime;
     vector<bool> vis( V + 1, false);
@@ -36,18 +36,42 @@ vector<vector<int>> SCC( vector<vector<int>>& adj, vector<vector<int>>& transpos
             dfs( adj, i, vis, finishTime );
         }
     }
-    vector<vector<int>> sccs;
+    sccs.clear();
     fill(vis.begin(), vis.end(), false);
+    vector<int> componentID( V + 1, 0 );
+    int currID = 0;
     while( finishTime.size() > 0 ) {
         int node = finishTime.top();
         finishTime.pop();
         if( !vis[node] ) {
             vector<int> comp;
-            reverseDFS( transposedAdj, node, vis, comp );
+            reverseDFS( transposedAdj, node, vis, comp);
+            currID += 1;
             sccs.push_back( comp );
+            for( auto x : comp ) {
+                componentID[x] = currID;
+            }
         }
     }
-    return sccs;
+    vector<int> inDeg( currID + 1,  0 );
+    set<pair<int,int>> isAdded;
+    for( int u = 1; u <= V; u += 1 ) {
+        for( int v : adj[u] ) {
+            int cu = componentID[u];
+            int cv = componentID[v];
+            if( cu != cv && isAdded.find( {cu, cv} ) == isAdded.end() ) {
+                inDeg[ cv ] += 1;
+                isAdded.insert( {cu, cv} );
+            }
+        }
+    }
+    int sccSrcCount = 0;
+    for( int i = 1; i <= currID; i += 1 ) {
+        if( inDeg[i] == 0 ) {
+            sccSrcCount += 1;
+        }
+    }
+    return sccSrcCount;
 }
 
 int main() {
@@ -63,14 +87,21 @@ int main() {
             adj[u].push_back( v );
             transposedAdj[v].push_back( u );
         }
-        vector<vector<int>> sccs = SCC( adj, transposedAdj, V );
-        cout << sccs.size() << endl;
-        for( int i = 0; i < sccs.size(); i += 1 ) {
-            for( auto c : sccs[i] ) {
-                cout << c << " ";
+        // number of source that has no incoming edge
+        cout << SCC( adj, transposedAdj, V ) << endl;
+        /**
+            how many scc:
+            cout << sccs.size() << endl;
+            cout << "SCCs are:" << endl;
+            for (int i = 0; i < sccs.size(); ++i) {
+                cout << "Component " << i + 1 << ": ";
+                for (int node : sccs[i]) {
+                    cout << node << " ";
+                }
+                cout << endl;
             }
-            cout << endl;
-        }
+        **/
     }
     return 0;
 }
+// UVA-> p11770 - Lighting Away
