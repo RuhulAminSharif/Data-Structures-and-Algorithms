@@ -46,6 +46,8 @@ Data Structures and Algorithms Implementation in C++
 >> * Depth First Search
 >> * Traversal on 2D grid
 > * Graph Connectivity
+>> * CC
+>> * SCC ( Kosaraju )
 > * Cycles
 >> * Undirected Graph Cycle Detection using bfs and dfs
 > * Shortest Paths
