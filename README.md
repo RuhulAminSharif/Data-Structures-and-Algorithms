@@ -45,18 +45,20 @@ Data Structures and Algorithms Implementation in C++
 >> * Bredth First Search
 >> * Depth First Search
 >> * Traversal on 2D grid
-> * Graph Connectivity
->> * CC
->> * SCC ( Kosaraju )
-> * Cycles
->> * Undirected Graph Cycle Detection using bfs and dfs
+>> * Graph Connectivity
+>>> * CC
+>>> * SCC ( Kosaraju )
+>> * Cycles or Bipartite Check
+>>> * Undirected Graph Cycle Detection using bfs and dfs
 > * Shortest Paths
->> * 0-1 BFS
->> * Dijskra - PQ
->> * Dijskra - Set
->> * Bellman Ford Algo
->> * Floydd-Warshall
->> * Johnsons Algo
+>> * SSSP ( Single Source Shortest Paths)
+>>> * 0-1 BFS
+>>> * Dijskra - PQ
+>>> * Dijskra - Set
+>>> * Bellman Ford Algo
+>> * All Pairs Shortest Paths
+>>> * Floydd-Warshall
+>>> * Johnsons Algo
 > * Minimum Spanning Tree
 >> * Prims Algorithm 
 ## Math
