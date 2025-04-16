@@ -50,6 +50,7 @@ Data Structures and Algorithms Implementation in C++
 >>> * SCC ( Kosaraju )
 >> * Cycles or Bipartite Check
 >>> * Undirected Graph Cycle Detection using bfs and dfs
+>>> * Bipartite Check using BFS
 > * Shortest Paths
 >> * SSSP ( Single Source Shortest Paths)
 >>> * 0-1 BFS
