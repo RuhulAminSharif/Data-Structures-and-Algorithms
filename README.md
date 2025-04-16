@@ -51,6 +51,7 @@ Data Structures and Algorithms Implementation in C++
 >> * Cycles or Bipartite Check
 >>> * Undirected Graph Cycle Detection using bfs and dfs
 >>> * Bipartite Check using BFS
+>>> * Kuhn's Algorithm
 > * Shortest Paths
 >> * SSSP ( Single Source Shortest Paths)
 >>> * 0-1 BFS
