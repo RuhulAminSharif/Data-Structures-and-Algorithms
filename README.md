@@ -1,15 +1,19 @@
 # Data-Structures-and-Algorithms
 Data Structures and Algorithms Implementation in C++
+
 ## Basics
 > * Fast_IO
 > * Range Queries Without Updates
 >> * Prefix Sum
+
 ## Bit Manipulation
 > * Basics
 > * Binary Number System
 > * Bits Related Problems
+
 ## Combinatorics
 > * Binomial Coefficients
+
 ## Data Structure
 > * Array
 >> * Boyer Moore Voting Algo
@@ -34,24 +38,25 @@ Data Structures and Algorithms Implementation in C++
 > * Trie
 >> * Trie on Strings
 >> * Trie on Bits
+
 ## Dynamic Programming
 > will update later
+
 ## Graph Theory
 > * List and Matrix vice versa conversion
 > * Graph Reperesentation
 >> * Directed Graph
 >> * Undirected Graph
+
 > * Graph Traversal
 >> * Bredth First Search
 >> * Depth First Search
 >> * Traversal on 2D grid
->> * Graph Connectivity
->>> * CC
->>> * SCC ( Kosaraju )
->> * Cycles or Bipartite Check
->>> * Undirected Graph Cycle Detection using bfs and dfs
->>> * Bipartite Check using BFS
->>> * Kuhn's Algorithm
+
+> * Graph Connectivity
+>> * CC
+>> * SCC ( Kosaraju )
+
 > * Shortest Paths
 >> * SSSP ( Single Source Shortest Paths)
 >>> * 0-1 BFS
@@ -61,11 +66,23 @@ Data Structures and Algorithms Implementation in C++
 >> * All Pairs Shortest Paths
 >>> * Floydd-Warshall
 >>> * Johnsons Algo
+
 > * Minimum Spanning Tree
 >> * Prims Algorithm 
+
+> * Cycles
+>> * Undirected Graph Cycle Detection using bfs and dfs
+
+> * Matching
+>> * Bipartite Matching
+>>> * Bipartite Check using BFS
+>>> * Kuhn's Algorithm
+
+
 ## Math
 > * Matrices
 >> * Matrix Exponentiation
+
 ## Number Theory
 > * Euclidean Algorithm (GCD, LCM)
 > * Modular Arithmetic
@@ -81,6 +98,7 @@ Data Structures and Algorithms Implementation in C++
 > * SOD - Sum of Divisors
 > * Sieve Linear
 > * Sieve Segmented
+
 ## Searching
 > * Linear Search
 > * Binary Search
@@ -88,12 +106,14 @@ Data Structures and Algorithms Implementation in C++
 >> * BS recursive
 >> * lower bound
 >> * upper bound
+
 ## Sorting
 > * Insertion Sort
 > * Selection Sort
 > * Bubble Sort
 > * Merge Sort
 > * Radix Sort
+
 ## String Algorithms
 > * Palindromes
 >> * Manachers Algorithm
