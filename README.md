@@ -93,6 +93,7 @@ Data Structures and Algorithms Implementation in C++
 > * Selection Sort
 > * Bubble Sort
 > * Merge Sort
+> * Radix Sort
 ## String Algorithms
 > * Palindromes
 >> * Manachers Algorithm
