@@ -52,6 +52,7 @@ Data Structures and Algorithms Implementation in C++
 >> * Bredth First Search
 >> * Depth First Search
 >> * Traversal on 2D grid
+>> * Tree Diameter
 
 > * Graph Connectivity
 >> * CC
