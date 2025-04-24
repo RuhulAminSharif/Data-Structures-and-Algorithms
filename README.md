@@ -80,6 +80,8 @@ Data Structures and Algorithms Implementation in C++
 >>> * Bipartite Check using BFS
 >>> * Kuhn's Algorithm
 
+> * Miscellaneour
+>> * Warnsdorff's Algorithm
 
 ## Math
 > * Matrices
