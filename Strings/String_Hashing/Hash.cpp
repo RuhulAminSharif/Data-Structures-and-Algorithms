@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long int
 #define endl "\n"
-class HasedString
+class HashedString
 {
 private:
     const int mod1 = 1e9+7, mod2 = 1e9+9;
@@ -12,7 +12,7 @@ private:
     vector<pair<ll,ll>> s_hash;
     vector<pair<ll,ll>> pow, inv_pow;
 public:
-    HasedString(const string& str) {
+    HashedString(const string& str) {
         len = str.size();
         pow_calc( len );
         s_hash.resize( len + 1 );
@@ -78,7 +78,7 @@ public:
         }
         return r;
     }
-    ~HasedString() = default;
+    ~HashedString() = default;
 };
 int main()
 {
@@ -90,9 +90,9 @@ int main()
     while( cin >> n ) {
         string text, pattern;
         cin >> pattern >> text;
-        HasedString hp(pattern);
+        HashedString hp(pattern);
         auto hpv = hp.getHash( 1, pattern.size() );
-        HasedString ht( text );
+        HashedString ht( text );
         ll ans = 0;
         for( ll i = 1; i + n - 1 <= text.size(); i += 1 ) {
             if( ht.getHash(i, i + n - 1) == hpv ) {
