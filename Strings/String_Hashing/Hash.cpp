@@ -49,24 +49,32 @@ class HashedString
 private:
     ll len;
     vector<pair<ll, ll>> s_hash;
-
+    string s;
 public:
     HashedString(const string &str)
     {
         len = str.size();
-        s_hash.resize(len + 1);
-        s_hash[0] = {0, 0};
-        string s = '$' + str; // converted into 1 - based string
+        s_hash.push_back( {0, 0} );
+        s.push_back( '$' );
+        s.append( str );
         for (ll i = 1; i <= len; i += 1)
         {
             pair<ll, ll> curr;
             char ch = s[i] - 'a' + 1;
             curr.first = (s_hash[i - 1].first % mod1 + (1LL * pw[i].first * ch) % mod1) % mod1;
             curr.second = (s_hash[i - 1].second % mod2 + (1LL * pw[i].second * ch) % mod2) % mod2;
-            s_hash[i] = curr;
+            s_hash.push_back(curr);
         }
     }
-    pair<ll, ll> getHash(ll left, ll right) // 1 - based index
+    void addChar( char ch ) {
+        s.push_back( ch );
+        pair<ll, ll> curr;
+        ll i = s_hash.size();
+        curr.first = (s_hash.back().first % mod1 + (1LL * pw[i].first * ch) % mod1) % mod1;
+        curr.second = (s_hash.back().second % mod2 + (1LL * pw[i].second * ch) % mod2) % mod2;
+        s_hash.push_back(curr);
+    }
+    pair<ll, ll> getHash(ll left, ll right)
     {
         pair<ll, ll> ans;
 
@@ -82,31 +90,12 @@ public:
 
         return ans;
     }
+
     ~HashedString() = default;
 };
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     pow_calc();
-    ll n;
-    while( cin >> n ) {
-        string text, pattern;
-        cin >> pattern >> text;
-        HashedString hp(pattern);
-        auto hpv = hp.getHash( 1, pattern.size() );
-        HashedString ht( text );
-        ll ans = 0;
-        for( ll i = 1; i + n - 1 <= text.size(); i += 1 ) {
-            if( ht.getHash(i, i + n - 1) == hpv ) {
-                cout << i - 1  << endl;
-            }
-        }
-        cout << endl;
-    }
-
     return 0;
 }
-
-// https://www.spoj.com/problems/NHAY/
