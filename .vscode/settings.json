@@ -13,6 +13,7 @@
     "ranges": "cpp",
     "span": "cpp",
     "stacktrace": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "iosfwd": "cpp"
   }
 }
