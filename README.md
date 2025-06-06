@@ -19,6 +19,35 @@ Data Structures and Algorithms Implementation in C++
 >> * Boyer Moore Voting Algo
 >> * Dutch National Flag Algo
 >> * Next Permutaion Algo
+> * Binary Tree
+>> * Binary Tree Representation
+>> * Binary Tree Traversal
+>>> * Inorder Traversal ( Recursive and Iterative )
+>>> * Preorder Traversal ( Recursive and Iterative )
+>>> * Postorder Traversal ( Recursive and Iterative )
+>>> * Levelorder Traversal
+>>> * Inorder, Preorder, Postorder Traversal ( All in one stack )
+>> * Binary Tree Extras
+>>> * Build Tree from Inorder and Preorder
+>>> * Build Tree from Inorder and Postorder
+>>> * Depth of Binary Tree
+> * Binary Search Tree
+>> * Binary Search Tree Representation and Implementation
+>> * Binary Search Tree Operations
+>>> * Insertion
+>>> * Deletion
+>>> * Search
+>> * Binary Search Tree Traversal
+>>> * Inorder Traversal 
+>>> * Preorder Traversal 
+>>> * Postorder Traversal 
+>> * Binary Search Tree Extras
+>>> * findMin and findMax from BST
+>>> * Lowest Common Ancestor (LCA)
+>>> * Validate Binary Search Tree
+>>> * Kth Smallest Element in BST
+>> * Build BST from Preorder
+
 > * Linked List
 >> * Singly Linked List
 >> * Doubly Linked List
@@ -121,6 +150,6 @@ Data Structures and Algorithms Implementation in C++
 ## String Algorithms
 > * Palindromes
 >> * Manachers Algorithm
-> * String Hashig
+> * String Hashing
 > * String Matching
 >> * KMP
