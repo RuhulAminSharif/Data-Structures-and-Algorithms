@@ -2,30 +2,29 @@
 using namespace std;
 #define ll long long 
 #define endl "\n"
-void Bubble_Sort(ll *a, ll start, ll end)
+void bubbleSort(vector<int>& arr )
 {
-    for(ll i=start; i<end-1; i++){
+    for( int i = 0; i < arr.size(); i += 1 ) {
         bool fg = true;
-        for(ll j=0; j<end-i-1; j++){
-            if(a[j]>a[j+1]){
+        for( int j = 1; j < arr.size() - i; j += 1 ) {
+            if( arr[j-1] > arr[j] ) {
+                swap( arr[j-1], arr[j] ) ;
                 fg = false;
-                swap(a[j], a[j+1]);
             }
         }
-        if(fg){
+        if( fg ) {
             break;
         }
     }
 }
 int main()
 {
-    ll a[] = {3,7,0,1,5,8,3,2,34,66,87,23,12,12,12};
-    ll size = sizeof(a)/sizeof(ll);
+    vector<int> arr = {3,7,0,1,5,8,3,2,34,66,87,23,12,12,12};
 
-    Bubble_Sort(a, 0, size); //a->array, 0->start index, (size)-> size of the array
+    bubbleSort(arr); 
 
-    for(ll i=0; i<size; i++){
-        cout << a[i] << " ";
+    for(int i=0; i < arr.size(); i += 1 ){
+        cout << arr[i] << " ";
     }
     cout << endl;
     return 0;

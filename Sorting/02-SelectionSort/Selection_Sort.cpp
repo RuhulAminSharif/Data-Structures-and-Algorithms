@@ -2,34 +2,35 @@
 using namespace std;
 #define ll long long 
 #define endl "\n"
-int select(int arr[], int i, int n)
+
+int select( vector<int>& arr, int i ) 
 {
-    int mnIdx = i, mn = arr[i];
-    for( int idx = i+1; idx < n; idx += 1 ) {
-        if( arr[idx] < mn ) {
-            mn = arr[idx];
+    int mnIdx = i;
+    for( int idx = i + 1; idx < arr.size(); idx += 1 ) {
+        if( arr[idx] < arr[mnIdx] ) {
             mnIdx = idx;
         }
     }
     return mnIdx;
 }
-     
-void selectionSort(int arr[], int n)
+void selectionSort( vector<int> & arr )
 {
-    for( int i = 0; i < n; i += 1 ) {
-        int idx = select( arr, i, n) ;
-        swap(arr[idx], arr[i]);
+    for( int i = 0; i < arr.size(); i += 1 ) {
+        int currIdx = i;
+        int mnIdx = select( arr, currIdx );
+        swap( arr[currIdx], arr[mnIdx] );
     }
+    return ;
 }
 int main()
 {
-    int a[] = {3,7,0,1,5,8,3,2,34,66,87,23,12,12,12};
-    int size = sizeof(a)/sizeof(int);
 
-    selectionSort(a, size);
+    vector<int> arr = {3, 7, 0, 1, 5, 8, 3, 2, 34, 66, 87, 23, 12, 12, 12};
 
-    for(ll i=0; i<size; i++){
-        cout << a[i] << " ";
+    selectionSort(arr);
+
+    for(int i = 0; i < arr.size(); i += 1 ){
+        cout << arr[i] << " ";
     }
     cout << endl;
     return 0;
